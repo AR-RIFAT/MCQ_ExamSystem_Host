@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="mcqAnchor" maxHeight="400.0" maxWidth="600.0" minHeight="162.0" minWidth="600.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.McqAns">
+   <children>
+      <ScrollPane fx:id="sc" fitToWidth="true" layoutX="200.0" layoutY="78.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="62.0">
+         <content>
+            <VBox fx:id="ansMcq" prefHeight="200.0" prefWidth="100.0" />
+         </content>
+      </ScrollPane>
+      <HBox fx:id="hb" alignment="CENTER" layoutY="-24.0" prefHeight="62.0" prefWidth="200.0" style="-fx-background-color: #aeb6bf;" AnchorPane.bottomAnchor="310.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <JFXButton fx:id="checkMcq" prefHeight="33.0" prefWidth="75.0" style="-fx-background-color: #f5b7b1;" text="Check" />
+            <VBox alignment="CENTER_LEFT" prefHeight="200.0" prefWidth="326.0" style="-fx-background-color: #d5dbdb;">
+               <HBox.margin>
+                  <Insets bottom="6.0" left="8.0" right="20.0" top="8.0" />
+               </HBox.margin>
+               <children>
+                  <Label fx:id="checked" text="Checked : 0">
+                     <VBox.margin>
+                        <Insets bottom="4.0" top="1.0" />
+                     </VBox.margin>
+                     <padding>
+                        <Insets left="4.0" />
+                     </padding>
+                  </Label>
+                  <Label fx:id="notChecked" text="Remaining : ">
+                     <padding>
+                        <Insets left="4.0" />
+                     </padding>
+                  </Label>
+               </children>
+            </VBox>
+            <JFXButton fx:id="submitAns" prefHeight="35.0" prefWidth="136.0" style="-fx-background-color: #76d7c4;" text="Submit">
+               <font>
+                  <Font name="Calibri Bold Italic" size="18.0" />
+               </font>
+            </JFXButton>
+         </children>
+      </HBox>
+   </children>
+</AnchorPane>

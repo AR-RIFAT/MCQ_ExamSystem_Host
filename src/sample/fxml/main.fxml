@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.MainController">
+   <children>
+      <JFXButton fx:id="acceptClient" layoutX="219.0" layoutY="76.0" text="Accept Client" />
+      <JFXButton fx:id="stopClient" layoutX="219.0" layoutY="128.0" text="Stop Accepting Client" />
+      <JFXButton fx:id="sendFile" layoutX="233.0" layoutY="275.0" style="-fx-background-color: #52be80;" text="Send File" />
+   </children>
+</AnchorPane>

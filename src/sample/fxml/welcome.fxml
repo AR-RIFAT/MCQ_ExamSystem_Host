@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="400.0" maxWidth="800.0" minHeight="460.0" prefHeight="500.0" prefWidth="800.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.WelcomeController">
+   <children>
+      <ImageView fitHeight="337.0" fitWidth="487.0" layoutX="313.0" layoutY="206.0" pickOnBounds="true" preserveRatio="true" rotate="180.0">
+         <image>
+            <Image url="@../img/cloud.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="290.0" fitWidth="256.0" layoutX="504.0" layoutY="43.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../img/lol.jpg" />
+         </image>
+      </ImageView>
+      <JFXButton fx:id="newExam" layoutX="72.0" layoutY="89.0" prefHeight="62.0" prefWidth="225.0" style="-fx-background-color: #82e0aa;" text="New Exam" textFill="#805959">
+         <font>
+            <Font size="26.0" />
+         </font>
+      </JFXButton>
+   </children>
+</AnchorPane>

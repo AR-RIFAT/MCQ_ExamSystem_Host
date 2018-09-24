@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.MainController">
+   <children>
+      <VBox prefHeight="104.0" prefWidth="900.0" style="-fx-border-color: #5d6d7e;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <HBox alignment="CENTER" prefHeight="106.0" prefWidth="200.0" style="-fx-background-color: #fadbd8;">
+               <children>
+                  <Label text="Exam Status">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <Pane prefHeight="200.0" prefWidth="260.0">
+                     <children>
+                        <HBox fx:id="waitPanetime" alignment="CENTER" prefHeight="33.0" prefWidth="260.0" style="-fx-background-color: #abebc6;">
+                           <children>
+                              <Label fx:id="waitClock" text=" HH : MM : SS ">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </HBox>
+                     </children>
+                  </Pane>
+                  <Pane prefHeight="200.0" prefWidth="260.0">
+                     <children>
+                        <HBox fx:id="runPanetime" alignment="CENTER" prefHeight="33.0" prefWidth="260.0">
+                           <children>
+                              <Label fx:id="runClock" text=" HH : MM : SS ">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </HBox>
+                     </children>
+                  </Pane>
+                  <Pane prefHeight="200.0" prefWidth="260.0">
+                     <children>
+                        <HBox fx:id="endPanetime" alignment="CENTER" prefHeight="33.0" prefWidth="260.0">
+                           <children>
+                              <Label fx:id="endClock" text=" HH : MM : SS ">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </HBox>
+                     </children>
+                  </Pane>
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #fadbd8;">
+               <children>
+                  <Pane prefHeight="200.0" prefWidth="260.0">
+                     <children>
+                        <HBox fx:id="waitPanetxt" alignment="CENTER" prefHeight="33.0" prefWidth="260.0" style="-fx-background-color: #abebc6;">
+                           <children>
+                              <Label text="Waiting for Students">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </HBox>
+                     </children>
+                  </Pane>
+                  <Pane prefHeight="200.0" prefWidth="260.0">
+                     <children>
+                        <HBox fx:id="runPanetxt" alignment="CENTER" prefHeight="33.0" prefWidth="260.0">
+                           <children>
+                              <Label text="Running">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </HBox>
+                     </children>
+                  </Pane>
+                  <Pane prefHeight="200.0" prefWidth="260.0">
+                     <children>
+                        <HBox fx:id="endPaneTxt" alignment="CENTER" prefHeight="33.0" prefWidth="260.0">
+                           <children>
+                              <Label text="Exam Ended">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </HBox>
+                     </children>
+                  </Pane>
+               </children>
+            </HBox>
+            <Pane minHeight="2.0" prefHeight="10.0" prefWidth="200.0" style="-fx-background-color: #85929e;" />
+         </children>
+      </VBox>
+      <HBox prefHeight="100.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="104.0">
+         <children>
+            <Pane prefHeight="200.0" prefWidth="662.0" style="-fx-background-color: #d6eaf8;" HBox.hgrow="ALWAYS">
+               <HBox.margin>
+                  <Insets />
+               </HBox.margin>
+               <children>
+                  <JFXButton fx:id="uploadAns" layoutX="73.0" layoutY="93.0" prefHeight="66.0" prefWidth="227.0" text=" Answer Sheet" />
+                  <JFXButton fx:id="printResult" layoutX="106.0" layoutY="214.0" prefHeight="51.0" prefWidth="162.0" text="Print Result" />
+               </children>
+            </Pane>
+            <Pane prefHeight="200.0" prefWidth="2.0" style="-fx-background-color: #aeb6bf;" />
+            <ScrollPane prefHeight="200.0" prefWidth="200.0">
+               <content>
+                  <VBox fx:id="connectedSt" prefHeight="567.0" prefWidth="292.0">
+                     <padding>
+                        <Insets left="8.0" top="8.0" />
+                     </padding></VBox>
+               </content>
+            </ScrollPane>
+         </children>
+      </HBox>
+   </children>
+</AnchorPane>
