@@ -14,7 +14,7 @@ import java.util.ResourceBundle;
 public class WelcomeController implements Initializable {
 
     @FXML
-    JFXButton newExam;
+    JFXButton newExam,archive;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -22,7 +22,15 @@ public class WelcomeController implements Initializable {
         newExam.setOnAction(e->{
             try {
                 AnchorPane root = FXMLLoader.load(getClass().getResource("fxml/newExamForm.fxml"));
-                Main.mStage.setScene(new Scene(root,800,600));
+                Main.mStage.setScene(new Scene(root,962,600));
+            } catch (IOException e1) {
+                e1.printStackTrace();
+            }
+        });
+        archive.setOnAction(e->{
+            try {
+                AnchorPane root = FXMLLoader.load(getClass().getResource("fxml/examArchive.fxml"));
+                Main.mStage.setScene(new Scene(root,962,600));
             } catch (IOException e1) {
                 e1.printStackTrace();
             }

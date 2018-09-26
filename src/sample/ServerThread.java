@@ -7,20 +7,32 @@ import java.util.Scanner;
 
 public class ServerThread extends Thread {
 
+    private volatile Thread blinker;
+
+    public void setBlinker() {
+        this.blinker = null;
+    }
+
     public ServerThread() {
 
     }
 
     @Override
     public void run() {
+        Thread thisThread = Thread.currentThread();
+        blinker = thisThread;
         Socket socket = new Socket();
         try {
             ServerSocket serverSocket = new ServerSocket(226);
 
-            while (Helper.acceptClient){
+            while (blinker == thisThread){
                 System.out.println("Waiting...");
                 socket = serverSocket.accept();
                 System.out.println("Accepted connection : " + socket);
+
+                if(blinker != thisThread){
+                    break;
+                }
 
                 Scanner scanstd = new Scanner(socket.getInputStream());
 
@@ -36,20 +48,21 @@ public class ServerThread extends Thread {
 
                 ps.println(Helper.courseCode);
                 ps.println(Helper.subjectName);
-                ps.println(Helper.startTime);
-                ps.println(Helper.endTime);
+                ps.println(Helper.startTime.toString());
+                ps.println(Helper.endTime.toString());
                 ps.println(Helper.totalQues);
 
                 SenderThread sender = new SenderThread(socket);
                 sender.start();
 
+                Helper.senderThreadList.add(sender);
+
             }
 
-            if(!Helper.acceptClient){
-                System.out.println("No more Clients ... ");
-//                serverSocket.close();
-//                socket.close();
-                Helper.acceptClient = true;
+            if(blinker != thisThread){
+                System.out.println("Sender Thread Closed ");
+                serverSocket.close();
+                socket.close();
             }
 
         } catch (Exception e) {

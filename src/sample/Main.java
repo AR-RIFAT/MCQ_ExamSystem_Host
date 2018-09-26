@@ -13,11 +13,13 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception{
+     //Runtime.getRuntime().exec("C:\\xampp\\xampp-control.exe");
+     DatabaseHelper.CheckDatabase();
         mStage = primaryStage;
 //        AnchorPane root = FXMLLoader.load(getClass().getResource("fxml/main.fxml"));
         AnchorPane root = FXMLLoader.load(getClass().getResource("fxml/welcome.fxml"));
         primaryStage.setTitle("Exam");
-        primaryStage.setScene(new Scene(root, 800, 600));
+        primaryStage.setScene(new Scene(root, 962, 600));
         primaryStage.show();
     }
 

@@ -20,6 +20,7 @@ import java.net.URL;
 import java.util.Optional;
 import java.util.ResourceBundle;
 import java.util.Scanner;
+import java.util.concurrent.atomic.AtomicReference;
 
 
 public class NewExamForm implements Initializable {
@@ -29,7 +30,7 @@ public class NewExamForm implements Initializable {
     @FXML
     JFXButton examStart,chooseQues,uploadAns;
     @FXML
-    JFXTextField startTime,endTime,courseCode,subjectName,totalQues;
+    JFXTextField startTime,endTime,courseCode,subjectName,session,totalQues;
     @FXML
     Label quesPath;
     @Override
@@ -38,18 +39,29 @@ public class NewExamForm implements Initializable {
         examStart.setOnAction(e->{
             Helper.courseCode = courseCode.getText();
             Helper.subjectName = subjectName.getText();
-            Helper.startTime = startTime.getText();
-            Helper.endTime = endTime.getText();
+            Helper.startTime = new AtomicReference<>(startTime.getText());
+            Helper.endTime = new AtomicReference<>(endTime.getText());
+            Helper.ExamType="TT1";//Exam Type
+            Helper.subjectName =Helper.subjectName+"_"+Helper.ExamType;
+
 
             try {
+                String table=Helper.courseCode+"_"+Helper.subjectName;
+                if(!DatabaseHelper.CheckTableName(table)) {
+                    DatabaseHelper.CreateTable(Helper.courseCode, Helper.subjectName);
+                    try {
 
-                AnchorPane root = FXMLLoader.load(getClass().getResource("fxml/initExam.fxml"));
-                Main.mStage.setScene(new Scene(root,800,600));
-            } catch (IOException e1) {
-                e1.printStackTrace();
-            }
-            try {
-                DatabaseHelper.CreateTable(Helper.courseCode,Helper.subjectName);
+                        AnchorPane root = FXMLLoader.load(getClass().getResource("fxml/examDashboard.fxml"));
+                        Main.mStage.setScene(new Scene(root,962,600));
+                    } catch (IOException e1) {
+                        e1.printStackTrace();
+                    }
+                }
+                else
+                {
+
+                    System.out.println("Already ache");
+                }
             } catch (Exception e1) {
                 e1.printStackTrace();
             }
@@ -121,6 +133,6 @@ public class NewExamForm implements Initializable {
 
     public void backtoHome() throws IOException {
         AnchorPane root = FXMLLoader.load(getClass().getResource("fxml/welcome.fxml"));
-        Main.mStage.setScene(new Scene(root,800,600));
+        Main.mStage.setScene(new Scene(root,962,600));
     }
 }

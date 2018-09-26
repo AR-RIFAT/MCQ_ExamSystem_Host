@@ -24,9 +24,9 @@
                         </Text>
                     </children>
                 </HBox>
-                <HBox alignment="CENTER" prefHeight="50.0" prefWidth="792.0" VBox.vgrow="ALWAYS">
+                <HBox alignment="CENTER" prefHeight="42.0" prefWidth="792.0" VBox.vgrow="ALWAYS">
                     <children>
-                        <JFXTextField fx:id="courseCode" prefHeight="42.0" prefWidth="262.0" promptText="Course Code">
+                        <JFXTextField fx:id="courseCode" prefHeight="42.0" prefWidth="292.0" promptText="Course Code">
                             <font>
                                 <Font size="14.0" />
                             </font>
@@ -36,58 +36,69 @@
                         <Insets top="26.0" />
                     </VBox.margin>
                 </HBox>
-            <HBox alignment="CENTER" prefHeight="50.0" prefWidth="200.0">
+            <HBox alignment="CENTER" prefHeight="42.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
                <children>
-                  <JFXTextField fx:id="subjectName" prefHeight="42.0" prefWidth="262.0" promptText="Subject Name" />
+                  <JFXTextField fx:id="subjectName" prefHeight="42.0" prefWidth="292.0" promptText="Subject Name" />
                </children>
             </HBox>
-                <HBox alignment="CENTER" prefHeight="50.0" prefWidth="792.0" VBox.vgrow="ALWAYS">
+            <HBox alignment="CENTER" prefHeight="42.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
+               <children>
+                  <JFXTextField fx:id="session" prefHeight="42.0" prefWidth="292.0" promptText="Session" />
+               </children>
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+            </HBox>
+                <HBox alignment="CENTER" prefHeight="42.0" prefWidth="792.0" VBox.vgrow="ALWAYS">
                     <children>
-                        <JFXTextField fx:id="totalQues" prefHeight="42.0" prefWidth="262.0" promptText="No. of Questions">
+                        <JFXTextField fx:id="totalQues" prefHeight="42.0" prefWidth="292.0" promptText="No. of Questions">
                             <font>
                                 <Font size="14.0" />
                             </font>
                         </JFXTextField>
                     </children>
                 </HBox>
-                <HBox alignment="CENTER" prefHeight="50.0" prefWidth="792.0" VBox.vgrow="ALWAYS">
+                <HBox alignment="CENTER" prefHeight="42.0" prefWidth="792.0" VBox.vgrow="ALWAYS">
                <children>
-                  <JFXTextField fx:id="startTime" prefHeight="42.0" prefWidth="262.0" promptText="Start Time -  HH : MM">
+                  <JFXTextField fx:id="startTime" prefHeight="42.0" prefWidth="292.0" promptText="Start Time -  HH : MM">
                      <font>
                         <Font size="14.0" />
                      </font>
                   </JFXTextField>
                </children>
                 </HBox>
-            <HBox alignment="CENTER" prefHeight="50.0" prefWidth="792.0" VBox.vgrow="ALWAYS">
+            <HBox alignment="CENTER" prefHeight="42.0" prefWidth="792.0" VBox.vgrow="ALWAYS">
                <children>
-                  <JFXTextField fx:id="endTime" prefHeight="42.0" prefWidth="262.0" promptText="End Time -  HH : MM">
+                  <JFXTextField fx:id="endTime" prefHeight="42.0" prefWidth="292.0" promptText="End Time -  HH : MM">
                      <font>
                         <Font size="14.0" />
                      </font>
                   </JFXTextField>
                </children>
             </HBox>
-            <HBox alignment="CENTER" prefHeight="50.0" prefWidth="200.0">
+            <HBox alignment="CENTER" prefHeight="42.0" prefWidth="200.0">
                <children>
-                  <JFXButton fx:id="chooseQues" prefHeight="32.0" prefWidth="112.0" style="-fx-background-color: #d7bde2;" text="Choose Question">
+                  <JFXButton fx:id="chooseQues" prefHeight="32.0" prefWidth="126.0" style="-fx-background-color: #d7bde2;" text="Choose Question">
                      <HBox.margin>
                         <Insets right="20.0" />
                      </HBox.margin>
                   </JFXButton>
-                  <Label fx:id="quesPath" prefHeight="32.0" prefWidth="120.0" style="-fx-background-color: #e5e8e8;">
+                  <Label fx:id="quesPath" prefHeight="32.0" prefWidth="130.0" style="-fx-background-color: #e5e8e8;">
                      <padding>
                         <Insets left="10.0" />
                      </padding>
                   </Label>
                </children>
+               <VBox.margin>
+                  <Insets top="6.0" />
+               </VBox.margin>
             </HBox>
-            <HBox alignment="CENTER" prefHeight="50.0" prefWidth="200.0">
+            <HBox alignment="CENTER" prefHeight="42.0" prefWidth="200.0">
                <children>
-                  <JFXButton fx:id="uploadAns" prefHeight="32.0" prefWidth="248.0" style="-fx-background-color: #d7bde2;" text="Upload Answer Sheet" />
+                  <JFXButton fx:id="uploadAns" prefHeight="32.0" prefWidth="280.0" style="-fx-background-color: #d7bde2;" text="Upload Answer Sheet" />
                </children>
             </HBox>
-                <HBox alignment="CENTER" prefHeight="80.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
+                <HBox alignment="CENTER" prefHeight="50.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
                     <children>
                         <JFXButton fx:id="examStart" prefHeight="22.0" prefWidth="137.0" style="-fx-background-color: #52be80;" text="Start" textFill="WHITE">
                             <font>

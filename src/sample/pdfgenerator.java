@@ -15,16 +15,16 @@ import java.util.List;
 
 public class pdfgenerator {
 
-    public static void pdf() throws Exception {
+    public static void pdf(String CourseCode,String SubjectName) throws Exception {
 
 
-        DatabaseHelper.CheckUpdateResult(Helper.courseCode,Helper.subjectName);
-        String dest=System.getProperty("user.home")+"/Desktop/"+Helper.courseCode+"_"+Helper.subjectName+".pdf";
+        DatabaseHelper.CheckUpdateResult(CourseCode,SubjectName);
+        String dest=System.getProperty("user.home")+"/Desktop/"+CourseCode+"_"+SubjectName+".pdf";
         Document document=new Document();
         PdfWriter.getInstance(document,new FileOutputStream(dest));
         document.open();
         Paragraph paragraph=new Paragraph("EXAM RESULT\n\n");
-        Paragraph para2=new Paragraph(Helper.courseCode+"     "+Helper.subjectName+"\n\n\n");
+        Paragraph para2=new Paragraph(CourseCode+"     "+SubjectName+"\n\n\n");
         para2.setAlignment(Element.ALIGN_CENTER);
 
 
@@ -33,12 +33,12 @@ public class pdfgenerator {
 
         document.add(paragraph);
         document.add(para2);
-        document.add(createTable());
+        document.add(createTable(CourseCode,SubjectName));
         document.close();
 
     }
 
-    public static PdfPTable createTable() throws Exception {
+    public static PdfPTable createTable(String CourseCode,String SubjectName) throws Exception {
 
         PdfPTable table=new PdfPTable(5);
         table.addCell("Reg No");
@@ -47,7 +47,7 @@ public class pdfgenerator {
         table.addCell("Untouched");
         table.addCell("Score");
 
-        List<StdInstance> data=DatabaseHelper.ReadtAllData(Helper.courseCode,Helper.subjectName);
+        List<StdInstance> data=DatabaseHelper.ReadtAllData(CourseCode,SubjectName);
 
 
         for(int i=0;i<data.size();i++)

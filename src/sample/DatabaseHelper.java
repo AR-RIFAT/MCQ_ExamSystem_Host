@@ -141,4 +141,96 @@ public class DatabaseHelper {
 
         return null;
     }
-}
+    public static void CheckDatabase()
+    {
+        Connection con = null;
+        ResultSet rs = null;
+
+        String url = "jdbc:mysql://localhost:3306/";
+        String user = "root";
+        String password = "";
+
+        try{
+
+            Class.forName("com.mysql.jdbc.Driver");
+
+            con = DriverManager.getConnection(url, user, password);
+
+            String dbName = "mcq";
+
+            if(con != null){
+
+                System.out.println("check if a database exists using java");
+
+                rs = con.getMetaData().getCatalogs();
+
+                Boolean flag=false;
+
+                while(rs.next()){
+                    String catalogs = rs.getString(1);
+                    System.out.println(catalogs);
+
+                    if(dbName.equals(catalogs)){
+                        System.out.println("the database "+dbName+" exists");
+                        flag=true;
+                    }
+
+                }
+                if(!flag)
+                {
+                    PreparedStatement createDatabase=con.prepareStatement("CREATE DATABASE MCQ");
+                    createDatabase.executeUpdate();
+                }
+
+            }
+            else{
+                System.out.println("unable to create database connection");
+            }
+        }
+        catch(Exception ex){
+            ex.printStackTrace();
+        }
+        finally{
+            if( rs != null){
+                try{
+                    rs.close();
+                }
+                catch(SQLException ex){
+                    ex.printStackTrace();
+                }
+            }
+            if( con != null){
+                try{
+                    con.close();
+                }
+                catch(SQLException ex){
+                    ex.printStackTrace();
+                }
+            }
+        }
+    }
+
+    public static Boolean CheckTableName(String table)
+    {
+        Boolean flag=false;
+
+        try {
+            Connection con=getConnection();
+            DatabaseMetaData dbm = con.getMetaData();
+// check if "employee" table is there
+            ResultSet tables = dbm.getTables(null, null, table, null);
+            if (tables.next()) {
+               flag=true;
+            }
+            else {
+                // Table does not exist
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return flag;
+    }
+
+
+    }
+

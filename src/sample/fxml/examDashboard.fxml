@@ -1,0 +1,250 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="600.0" prefWidth="962.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.MainController">
+   <children>
+      <HBox alignment="CENTER" fillHeight="false" prefHeight="140.0" style="-fx-background-color: #a3e4d7;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <VBox fx:id="bak" prefHeight="200.0" prefWidth="350.0">
+               <HBox.margin>
+                  <Insets right="70.0" />
+               </HBox.margin>
+               <children>
+                  <HBox prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #a9cce3;">
+                     <children>
+                        <Label prefWidth="108.0" text="Course Code ">
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                           <padding>
+                              <Insets left="6.0" top="6.0" />
+                           </padding>
+                        </Label>
+                        <Label fx:id="courseCode" text=": ">
+                           <padding>
+                              <Insets top="6.0" />
+                           </padding>
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #d1f2eb;">
+                     <children>
+                        <Label prefWidth="108.0" text="Course Name ">
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets />
+                           </HBox.margin>
+                           <padding>
+                              <Insets left="6.0" top="4.0" />
+                           </padding>
+                        </Label>
+                        <Label fx:id="courseName" text=":">
+                           <padding>
+                              <Insets top="4.0" />
+                           </padding>
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #a9cce3;">
+                     <children>
+                        <Label prefWidth="108.0" text="Total Ques ">
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets />
+                           </HBox.margin>
+                           <padding>
+                              <Insets left="6.0" top="4.0" />
+                           </padding>
+                        </Label>
+                        <Label fx:id="totalQues" text=":">
+                           <padding>
+                              <Insets top="4.0" />
+                           </padding>
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #d1f2eb;">
+                     <children>
+                        <Label prefWidth="108.0" text="Date ">
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                           <padding>
+                              <Insets left="6.0" top="4.0" />
+                           </padding>
+                        </Label>
+                        <Label fx:id="Date" text=":">
+                           <HBox.margin>
+                              <Insets />
+                           </HBox.margin>
+                           <padding>
+                              <Insets top="4.0" />
+                           </padding>
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+            <VBox prefHeight="200.0" prefWidth="162.0" style="-fx-background-color: #a2d9ce;">
+               <HBox.margin>
+                  <Insets right="12.0" />
+               </HBox.margin>
+               <children>
+                  <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <Label text="Start">
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #f4f6f7;">
+                     <children>
+                        <Label fx:id="startTime" text="HH : MM : SS">
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <Label>
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+            <VBox prefHeight="200.0" prefWidth="162.0" style="-fx-background-color: #a2d9ce;">
+               <HBox.margin>
+                  <Insets right="12.0" />
+               </HBox.margin>
+               <children>
+                  <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <Label text="End">
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #f4f6f7;">
+                     <children>
+                        <Label fx:id="endTime" text="HH : MM : SS">
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <Label>
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+            <VBox prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #73c6b6;">
+               <children>
+                  <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <Label text="Exam Status" textFill="#c90707">
+                           <font>
+                              <Font name="Candara" size="18.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #f5cba7;">
+                     <children>
+                        <Label fx:id="clock" text="HH : MM : SS">
+                           <font>
+                              <Font name="System Bold" size="18.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <Label fx:id="examStatus" text="Label">
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+         </children>
+      </HBox>
+      <HBox prefHeight="4.0" prefWidth="200.0" style="-fx-background-color: #5d6d7e;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="138.0" />
+       <HBox prefHeight="100.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="142.0">
+           <children>
+               <Pane prefHeight="200.0" prefWidth="662.0" style="-fx-background-color: #e5e7e9;" HBox.hgrow="ALWAYS">
+                   <HBox.margin>
+                       <Insets />
+                   </HBox.margin>
+                   <children>
+                       <JFXButton fx:id="uploadAns" layoutX="153.0" layoutY="215.0" prefHeight="66.0" prefWidth="227.0" style="-fx-background-color: #aed6f1;" text=" Answer Sheet">
+                     <font>
+                        <Font size="18.0" />
+                     </font></JFXButton>
+                       <JFXButton fx:id="printResult" layoutX="153.0" layoutY="318.0" prefHeight="66.0" prefWidth="227.0" style="-fx-background-color: #a9cce3;" text="Print Result">
+                     <font>
+                        <Font size="18.0" />
+                     </font></JFXButton>
+                  <JFXButton fx:id="changeTime" layoutX="153.0" layoutY="103.0" prefHeight="66.0" prefWidth="227.0" style="-fx-background-color: #aeb6bf;" text="Change Exam Time">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </JFXButton>
+                   </children>
+               </Pane>
+               <Pane prefHeight="200.0" prefWidth="2.0" style="-fx-background-color: #aeb6bf;" />
+               <ScrollPane prefHeight="200.0" prefWidth="200.0">
+                   <content>
+                       <VBox fx:id="connectedSt" prefHeight="567.0" prefWidth="292.0">
+                           <padding>
+                               <Insets left="8.0" top="8.0" />
+                           </padding></VBox>
+                   </content>
+               </ScrollPane>
+           </children>
+       </HBox>
+   </children>
+
+</AnchorPane>

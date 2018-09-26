@@ -10,12 +10,21 @@ public class SenderThread extends Thread {
     public final static String FILE_TO_SEND = "C:\\Users\\Rifat\\Desktop\\pics 2 Tourist Guide\\ques.pdf";
     Socket socket;
 
+    private volatile Thread blinker;
+
+    public void setBlinker() {
+        this.blinker = null;
+    }
+
     public SenderThread(Socket s) {
         this.socket = s;
     }
 
     @Override
     public void run() {
+
+        Thread thisThread = Thread.currentThread();
+        blinker = thisThread;
 
         while(true){
 
@@ -63,7 +72,7 @@ public class SenderThread extends Thread {
 
         }
 
-        while(true){
+        while(blinker == thisThread){
             try {
                 Scanner ansSheet = new Scanner(socket.getInputStream());
                 System.out.println("Tumi amar Jibon");
@@ -86,14 +95,14 @@ public class SenderThread extends Thread {
             }
         }
 
-        while(true){
+/*        while(blinker == thisThread){
             try {
                 sleep(150);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-        }
-
+        }*/
+        System.out.println(thisThread.getName()+" "+"Closed !");
 
     }
 }
