@@ -3,9 +3,9 @@
     <output-path>$PROJECT_DIR$/out/artifacts/Exam_jar</output-path>
     <root id="archive" name="Exam.jar">
       <element id="module-output" name="Exam" />
-      <element id="extracted-dir" path="$USER_HOME$/Downloads/itextpdf-5.5.13.jar" path-in-jar="/" />
-      <element id="extracted-dir" path="$PROJECT_DIR$/../Parcel_Management/lib/mysql-connector-java-5.1.40.jar" path-in-jar="/" />
-      <element id="extracted-dir" path="$PROJECT_DIR$/../Data/FX app/lib/jfoenix-0.0.0-SNAPSHOT-retrolambda.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/lib/jfoenix-0.0.0-SNAPSHOT-retrolambda.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/lib/itextpdf-5.5.13.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/lib/mysql-connector-java-5.1.40.jar" path-in-jar="/" />
     </root>
   </artifact>
 </component>

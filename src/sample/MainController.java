@@ -43,7 +43,7 @@ public class MainController implements Initializable {
     @FXML
     public VBox connectedSt,bak;
     @FXML
-    private Label courseCode,courseName,totalQues,Date,startTime,endTime,clock,examStatus;
+    private Label courseCode,courseName,totalQues,Date,startTime,endTime,clock,examStatus,myport;
 
     static int H=0,M=0,S=0,Ms=0;
 
@@ -51,7 +51,10 @@ public class MainController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
-        acceptClient();
+        Thread.currentThread().setName("MainController");
+
+        serverThread = new ServerThread("ServerThread");
+        serverThread.start();
 
         ChangeListener<Number> stageSizeListener = (observable, oldValue, newValue) ->{
             if(Main.mStage.getWidth() > 1100){
@@ -95,11 +98,16 @@ public class MainController implements Initializable {
 
             @Override
             public void run() {
+                Thread.currentThread().setName("MainController_1");
                 int c = 0;
                 while(true){
                     try {
                         sleep(200);
-                        if(Helper.students.size() > c){
+                        if( (Helper.students.size() > c )  || (!Helper.studentList) ){
+                            if(!Helper.studentList){
+                                System.out.println(" studentList break");
+                                break;
+                            }
                             StdInstance st= Helper.students.get(c);
                             c++;
                             user = c + ". " + st.getName() + " - " + st.getRegId();
@@ -107,6 +115,7 @@ public class MainController implements Initializable {
                             Platform.runLater(new Runnable() {
                                 @Override
                                 public void run() {
+                                    Thread.currentThread().setName("MainController_1_runLater");
                                     connectedSt.getChildren().add(new Label(user));
                                     connectedSt.getChildren().add(new Label(""));
                                 }
@@ -121,6 +130,74 @@ public class MainController implements Initializable {
         };
 
         connectedStudents.start();
+
+        int endTime = Integer.parseInt(Helper.endTime.toString().substring(3,5));
+
+        SimpleDateFormat dateFormatGmt = new SimpleDateFormat("HH:mm");
+
+        Thread ansRecThread = new Thread(){
+
+            @Override
+            public void run() {
+                Thread.currentThread().setName("MainController_2");
+                while(true){
+                    String time = dateFormatGmt.format(Calendar.getInstance().getTime());
+
+                    int min = Integer.parseInt(time.substring(3,5));
+
+                    if(min == endTime-1){
+                        serverThread.setBlinker();
+                        Helper.studentList = false;
+                        try {
+                            Socket sock = new Socket("127.0.0.1",Integer.parseInt(Helper.port));
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+                        break;
+                    }
+                    try {
+                        Thread.sleep(100);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+
+                }
+            }
+        };
+
+        ansRecThread.start();
+
+        Thread portThread = new Thread(){
+
+            @Override
+            public void run() {
+                Thread.currentThread().setName("MainController_3");
+                while(true){
+
+                    if(!Helper.port.equals("")){
+
+                        Platform.runLater(new Runnable() {
+                            @Override
+                            public void run() {
+                                myport.setText(Helper.port);
+                                Thread.currentThread().setName("MainController_3_runLater");
+                            }
+                        });
+
+                        break;
+                    }
+
+                    try {
+                        Thread.sleep(100);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+
+                }
+            }
+        };
+
+        portThread.start();
 
         printResult.setOnAction(e->{
             try {
@@ -211,15 +288,13 @@ public class MainController implements Initializable {
 
     //// ------- Methods ------- /////
 
-    private void acceptClient(){
-        serverThread = new ServerThread();
-        serverThread.start();
-    }
+/*    private void acceptClient(){
+
+    }*/
 
     private void stopClient() throws IOException {
         System.out.println("bondho kori ");
         serverThread.setBlinker();
-        Socket sock = new Socket("127.0.0.1",226);
 
         for(SenderThread st : Helper.senderThreadList){
             st.setBlinker();
@@ -234,7 +309,7 @@ public class MainController implements Initializable {
 
             @Override
             public void run() {
-
+                Thread.currentThread().setName("MainController_Clock");
 
                 while (Helper.wait==true || Helper.run==true )
                 {
@@ -289,7 +364,7 @@ public class MainController implements Initializable {
                         Platform.runLater(new Runnable() {
                             @Override
                             public void run() {
-
+                                Thread.currentThread().setName("MainController_Clock_runLater");
 
                                 String time=Integer.toString(H)+" : "+Integer.toString(M)+" : "+Integer.toString(S);
                                 if(Helper.run){

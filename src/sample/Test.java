@@ -19,6 +19,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.*;
+import java.text.SimpleDateFormat;
 import java.util.*;
 import java.net.DatagramSocket;
 
@@ -26,6 +27,8 @@ public class Test implements Initializable {
 
     @FXML
     VBox bak;
+    @FXML
+    Button btn;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -43,13 +46,39 @@ public class Test implements Initializable {
         Main.mStage.widthProperty().addListener(stageSizeListener);
         Main.mStage.heightProperty().addListener(stageSizeListener);*/
 
-        try(final DatagramSocket socket = new DatagramSocket()){
+/*        try(final DatagramSocket socket = new DatagramSocket()){
             socket.connect(InetAddress.getByName("8.8.8.8"), 10002);
             String ip = socket.getLocalAddress().getHostAddress();
             System.out.println(ip);
         }catch (Exception e){
             System.out.println();
-        }
+        }*/
+
+        btn.setOnAction(e->{
+            System.out.println("Tipo");
+        });
+
+        SimpleDateFormat dateFormatGmt = new SimpleDateFormat("HH:mm");
+
+        Thread ansRecThread = new Thread(){
+
+            @Override
+            public void run() {
+                int c = 0;
+                while(true){
+                    String time = dateFormatGmt.format(Calendar.getInstance().getTime());
+
+                    int min = Integer.parseInt(time.substring(3,5));
+
+                    if(min==18){
+                        System.out.println("asdasd");
+                        break;
+                    }
+                }
+            }
+        };
+
+        ansRecThread.start();
 
     }
 

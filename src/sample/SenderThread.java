@@ -9,6 +9,7 @@ public class SenderThread extends Thread {
 
     public final static String FILE_TO_SEND = "C:\\Users\\Rifat\\Desktop\\pics 2 Tourist Guide\\ques.pdf";
     Socket socket;
+    private String threadName;
 
     private volatile Thread blinker;
 
@@ -16,15 +17,17 @@ public class SenderThread extends Thread {
         this.blinker = null;
     }
 
-    public SenderThread(Socket s) {
+    public SenderThread(String name, Socket s) {
+        this.threadName = name;
         this.socket = s;
     }
 
     @Override
     public void run() {
+        Thread.currentThread().setName(threadName);
 
-        Thread thisThread = Thread.currentThread();
-        blinker = thisThread;
+/*        Thread thisThread = Thread.currentThread();
+        blinker = thisThread;*/
 
         while(true){
 
@@ -34,27 +37,20 @@ public class SenderThread extends Thread {
                     {
                         System.out.println("file sending...");
                         File file = new File(Helper.quesPath);
-                        // Get the size of the file
-                        long length = file.length();
-                        byte[] bytes = new byte[16 * 1024];
-                        InputStream in = new FileInputStream(file);
+
+                        byte[] bytes = new byte[1];
+                        InputStream in = new BufferedInputStream(new FileInputStream(file));
                         OutputStream out = socket.getOutputStream();
 
                         int count;
                         while ((count = in.read(bytes)) > 0) {
-                            out.write(bytes, 0, count);
                             System.out.println("ec : "+count);
+                            out.write(bytes, 0, count);
                         }
 
-                       //out.close();
-                       //out.flush();
-                        System.out.println("Aha : "+count);
+                        out.flush();
+                        out.close();
 
-/*                        byte[] test = new byte[17*1024];
-                        out.write(test,0,17408);
-                        out.flush();*/
-
-                       in.close();
                         break;
                     }
                 } catch (IOException e) {
@@ -68,77 +64,7 @@ public class SenderThread extends Thread {
                 e.printStackTrace();
             }
 
-
-
         }
-
-        while(blinker == thisThread){
-            try {
-                Scanner ansSheet = new Scanner(socket.getInputStream());
-                System.out.println("Tumi amar Jibon");
-
-                String ans=ansSheet.nextLine();
-                System.out.println(ans);
-                String reg=ans.substring(0,10);
-                String StdAns=ans.substring(10);
-                DatabaseHelper.UpdateAns(Helper.courseCode,Helper.subjectName,reg,StdAns);
-                System.out.println("Answer Received");
-                break;
-
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-            try {
-                sleep(200);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-        }
-
-/*        while(blinker == thisThread){
-            try {
-                sleep(150);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-        }*/
-        System.out.println(thisThread.getName()+" "+"Closed !");
 
     }
 }
-
-/*
-
-    FileInputStream fis = null;
-    BufferedInputStream bis = null;
-    OutputStream os = null;
-    ServerSocket servsock = null;
-    Socket sock = null;
-
-        while(true){
-                // send file
-                try{
-                if(true){
-                try{
-                File myFile = new File (FILE_TO_SEND);
-                byte [] mybytearray  = new byte [(int)myFile.length()];
-                fis = new FileInputStream(myFile);
-                bis = new BufferedInputStream(fis);
-                bis.read(mybytearray,0,mybytearray.length);
-                os = sock.getOutputStream();
-                System.out.println("Sending " + FILE_TO_SEND + "(" + mybytearray.length + " bytes)");
-                os.write(mybytearray,0,mybytearray.length);
-                os.flush();
-                System.out.println("Done.");
-                }catch (Exception e){
-                System.out.println("Vul hoise... Mara Khaiso ...");
-                }finally {
-                if (bis != null) bis.close();
-                if (os != null) os.close();
-                if (sock!=null) sock.close();
-                }
-                }
-                }catch(Exception e) {
-
-                }
-                }*/

@@ -36,6 +36,8 @@ public class NewExamForm implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
+        Thread.currentThread().setName("NewExamForm");
+
         examStart.setOnAction(e->{
             Helper.courseCode = courseCode.getText();
             Helper.subjectName = subjectName.getText();

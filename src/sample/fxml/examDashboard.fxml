@@ -232,6 +232,7 @@
                         <Font size="18.0" />
                      </font>
                   </JFXButton>
+                  <Label fx:id="myport" layoutX="530.0" layoutY="75.0" prefHeight="47.0" prefWidth="168.0" text="Port" />
                    </children>
                </Pane>
                <Pane prefHeight="200.0" prefWidth="2.0" style="-fx-background-color: #aeb6bf;" />

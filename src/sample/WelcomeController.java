@@ -19,6 +19,8 @@ public class WelcomeController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
+        Thread.currentThread().setName("Welcome");
+
         newExam.setOnAction(e->{
             try {
                 AnchorPane root = FXMLLoader.load(getClass().getResource("fxml/newExamForm.fxml"));

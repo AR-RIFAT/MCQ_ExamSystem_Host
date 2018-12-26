@@ -13,7 +13,10 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception{
-     //Runtime.getRuntime().exec("C:\\xampp\\xampp-control.exe");
+
+        Thread.currentThread().setName("Main");
+
+     Runtime.getRuntime().exec("C:\\xampp\\xampp-control.exe");
      DatabaseHelper.CheckDatabase();
         mStage = primaryStage;
 //        AnchorPane root = FXMLLoader.load(getClass().getResource("fxml/main.fxml"));
@@ -26,5 +29,10 @@ public class Main extends Application {
 
     public static void main(String[] args) {
         launch(args);
+    }
+
+    @Override
+    public void stop() throws Exception {
+        System.exit(0);
     }
 }

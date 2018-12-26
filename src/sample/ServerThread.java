@@ -8,26 +8,30 @@ import java.util.Scanner;
 public class ServerThread extends Thread {
 
     private volatile Thread blinker;
+    private String threadName;
 
     public void setBlinker() {
         this.blinker = null;
     }
 
-    public ServerThread() {
-
+    public ServerThread(String name) {
+        this.threadName = name;
     }
 
     @Override
     public void run() {
+        Thread.currentThread().setName(threadName);
         Thread thisThread = Thread.currentThread();
         blinker = thisThread;
-        Socket socket = new Socket();
-        try {
-            ServerSocket serverSocket = new ServerSocket(226);
 
-            while (blinker == thisThread){
+        try {
+            ServerSocket serverSocket = new ServerSocket(0);
+            System.out.println("Port : "+ serverSocket.getLocalPort());
+            Helper.port = Integer.toString(serverSocket.getLocalPort());
+
+            while (true){
                 System.out.println("Waiting...");
-                socket = serverSocket.accept();
+                Socket socket = serverSocket.accept();
                 System.out.println("Accepted connection : " + socket);
 
                 if(blinker != thisThread){
@@ -49,21 +53,58 @@ public class ServerThread extends Thread {
                 ps.println(Helper.courseCode);
                 ps.println(Helper.subjectName);
                 ps.println(Helper.startTime.toString());
-                ps.println(Helper.endTime.toString());
+                String tt = Helper.startTime.toString()+Helper.endTime.toString();
+                System.out.println(tt);
+                ps.println(tt);
                 ps.println(Helper.totalQues);
 
-                SenderThread sender = new SenderThread(socket);
+                SenderThread sender = new SenderThread("SenderThread",socket);
                 sender.start();
 
                 Helper.senderThreadList.add(sender);
 
             }
 
-            if(blinker != thisThread){
+            while(true){
+                System.out.println("Total Connection : "+Helper.students.size());
+                System.out.println("Waiting For Ans...");
+                Socket socket = serverSocket.accept();
+
+                Scanner sc = new Scanner(socket.getInputStream());
+
+                String str = sc.next();
+                String arr[] = str.split("#");
+                String reg = arr[0];
+                String ans = arr[1];
+                System.out.println("Received Ans..." + str);
+
+                boolean flag = false;
+                for (StdInstance st:Helper.students) {
+
+                    String roll = st.getRegId();
+
+                    if(roll.equals(reg)){
+                        flag = true;
+                    }
+                }
+
+                if(flag){
+                    Helper.ansSheetCounter++;
+                    DatabaseHelper.UpdateAns(Helper.courseCode,Helper.subjectName,reg,ans);
+
+                    if(Helper.ansSheetCounter == Helper.students.size()){
+                        break;
+                    }
+                }else {
+                    socket.close();
+                }
+            }
+
+/*            if(blinker != thisThread){
                 System.out.println("Sender Thread Closed ");
                 serverSocket.close();
                 socket.close();
-            }
+            }*/
 
         } catch (Exception e) {
             e.printStackTrace();

@@ -8,9 +8,15 @@ public class Helper {
 
     public static boolean acceptClient = true ;
 
+    public static String port="";
+
     public static List<SenderThread> senderThreadList = new ArrayList<>();
 
     public static boolean sendFile = false;
+
+    public static int ansSheetCounter = 0;
+
+    public static boolean studentList = true;
 
     public static String courseCode,subjectName,quesPath,ExamType;
 
